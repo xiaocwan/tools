@@ -90,8 +90,10 @@ if __name__ == '__main__':
 	print "Book path: " + os.getcwd() +'/'+ bookName
 	f.write(bookName)
 
-	bookIntro = book.get_book_short_intro(book.url)
-	f.write(bookIntro.encode('utf-8'))
+	try:
+		bookIntro = book.get_book_short_intro(book.url)
+		f.write(bookIntro.encode('utf-8'))
+	except: pass
 
 	chapterUrlIds = book.get_chapter_url_id(book.url)
 	chapterUrlList = [urlparse.urljoin(bookUrl,url) for url in chapterUrlIds]
